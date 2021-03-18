@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText, Card, CardText, CardBody, CardLink,
   CardTitle, CardSubtitle
@@ -7,9 +8,22 @@ import {
 const ViewEducationStudent = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen(prevState => !prevState);
+  const [university, setUniversity] = useState([]);
+  //ไปดึง api ของอันเก่ามาใช้จาก url
+  const updateUniversity = () => {
+    axios.get("http://localhost:8080/University/getUniversity").then((response) => {
+      console.log(response);
+      setUniversity(response.data.university);
+    });
+  };
+
+  useEffect(() => {
+    updateUniversity();
+  }, []);
   return (
     <div>
       <div class="container">
+
         <center><h3>   ค้นหามหาวิทยาลัย  </h3></center>
         <br />
         <Row>
@@ -17,46 +31,43 @@ const ViewEducationStudent = (props) => {
             <FormGroup>
               <Label for="id_university">ชื่อมหาวิทยาลัย</Label>
               <Input type="select" name="id_university" id="id_university">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                {university.map((university) => {
+                  return (
+                    <option value={university.id_university}>{university.name_uni}</option>
+
+
+                  );
+                })}
               </Input>
+
             </FormGroup>
           </Col>
         </Row>
+
       </div>
       <br />
       <div class="container">
-        <Row>
-          <Col>
-            <Card>
-              <CardBody>
-                <CardTitle tag="h5">มหาวิทยาลัยราชภัฏนครปฐม</CardTitle>
-              </CardBody>
-              <img width="100%" src="./img/LogoNpru.png" alt="Logo" />
-              <CardBody>
-                <CardText>คราวๆ</CardText>
-                <Button href="https://www.npru.ac.th/index.php">รายละเอียด</Button>
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Card>
-              <CardBody>
-                <CardTitle tag="h5">Test</CardTitle>
-              </CardBody>
-              <img width="100%" src="/assets/318x180.svg" alt="Card image cap" />
-              <CardBody>
-                <CardText>คราวๆ</CardText>
-                <Button href="./universitydetail">รายละเอียด</Button>
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
+
+        {university.map((university) => {
+          return (
+            <Row>
+              <Col>
+                <Card>
+                  <CardBody>
+                    <CardTitle tag="h5">{university.name_uni}</CardTitle>
+                  </CardBody>
+                  <CardBody>
+                    <img width="100%" src="" alt="ไว้ใส่ โลโก้มหาลัย" />
+                  </CardBody>
+                  <CardBody>
+                    <CardTitle >{university.detail_uni}</CardTitle>
+                  </CardBody>
+                  <Button href={university.url_uni}>ดูรายละเอียด</Button>
+                </Card>
+              </Col>
+            </Row>
+          );
+        })}
       </div>
 
 

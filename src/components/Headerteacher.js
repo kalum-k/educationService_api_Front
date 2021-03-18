@@ -54,11 +54,11 @@ const Header = () => {
                         <Nav className="mr-auto" navbar>
 
                             <NavItem >
-                                <NavLink href="/educationstudentallstudent" > ข้อมูลการศึกษาต่อ </NavLink>
+                                <NavLink href="/educationstudentallstudent" > จัดการข้อมูลการศึกษาต่อ </NavLink>
                             </NavItem>
 
                             <NavItem >
-                                <NavLink href="/educationstudent" > ข้อมูลมหาวิทยาลัย </NavLink>
+                                <NavLink href="/educationstudent" > จัดการข้อมูลมหาวิทยาลัย </NavLink>
                             </NavItem>
                         </Nav >
                         <NavLink>
@@ -77,18 +77,18 @@ const Header = () => {
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar >
                         <Nav className="mr-auto" navbar>
+                            <NavItem >
+                                <NavLink href="/educationstudentallstudent" > ข้อมูลการศึกษาต่อ </NavLink>
+                            </NavItem>
 
-                        <NavItem >
+                            <NavItem >
+                                <NavLink href="/educationstudent" > ข้อมูลมหาวิทยาลัย </NavLink>
+                            </NavItem>
+                            <NavItem >
                                 <NavLink href="/educationall" > ข้อมูลจัดการข้อมูลการศึกษาต่อ</NavLink>
                             </NavItem >
-                            <NavItem >
-                                <NavLink href="/educationall" > ข้อมูลจัดการข้อมูลมหาวิทยาลัย</NavLink>
-                            </NavItem >
-
                         </Nav>
-
                         <NavLink >
-
                             <UncontrolledDropdown>
                                 <DropdownToggle nav caret>
                                     {session.fname_stu}{" "}{session.lname_stu}

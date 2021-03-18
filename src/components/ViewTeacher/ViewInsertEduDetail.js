@@ -22,6 +22,20 @@ const ViewInsertEduDetail = () => {
     const [submited, setSumited] = useState(false)
     const [course, setCourse] = useState([])
     const [faculty, setFaculty] = useState([])
+    const [university, setUniversity] = useState([])
+    const [education, setEducation] = useState([])
+
+    
+    const updateeducation = () => {
+        axios.get("http://localhost:8080/University").then((response) => {
+            console.log(response);
+            setEducation(response.data.university);
+            console.log("Updating .....");
+        });
+    };
+    useEffect(() => {
+        updateeducation();
+    }, []);
 
     const updateFaculty = () => {
         axios.get("http://localhost:8080/faculty").then((response) => {
@@ -55,6 +69,16 @@ const ViewInsertEduDetail = () => {
         setEdudetail({ ...edudetail, [name]: value });
     };
 
+    const updateUniversity = () => {
+        axios.get("http://localhost:8080/University").then((response) => {
+            console.log(response);
+            setUniversity(response.data.university);
+            console.log("Updating .....");
+        });
+    };
+    useEffect(() => {
+        updateUniversity();
+    }, []);
 
     const saveEdudetail = (fileURL) => {
         var data = {
@@ -122,10 +146,10 @@ const ViewInsertEduDetail = () => {
                                         })}
                                     </Input>
                                 </FormGroup></Col>
-                                <Col xs="6">
+                            <Col xs="6">
                                 <FormGroup>
                                     <Label for="">กลุ่มสาขาวิชา</Label>
-                                    <Input type="text" name="" id="" 
+                                    <Input type="text" name="" id=""
                                         onChange={handleInputChange}>
                                     </Input>
                                 </FormGroup></Col>
@@ -153,8 +177,9 @@ const ViewInsertEduDetail = () => {
                             <Col xs="6">
                                 <FormGroup>
                                     <Label for="id_education">Education</Label>
-                                    <Input type="text" name="id_education" id="id_education"
+                                    <Input type="select" name="id_education" id="id_education"
                                         onChange={handleInputChange} value={edudetail.id_education || ""}>
+                                     
                                     </Input>
 
                                 </FormGroup></Col>

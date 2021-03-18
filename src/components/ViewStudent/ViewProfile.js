@@ -19,69 +19,40 @@ const ViewProfile = ({id}) => {
           <br />
 <div class="container">
 <Form>
-    <center><h3> ข้อมูลส่วนตัว </h3></center>
-      <Row form>
+    <center><h3> ข้อมูลการส่วนตัว </h3></center>
+      <Row>
       <Col>
-          <FormGroup>
-            <Label for="id_stu">รหัสประจำตัว</Label>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-            {student.id_stu}
-          </FormGroup>
+            <Label for="examplePassword">รหัสนักศึกษา</Label> : {student.id_stu}
         </Col>
-      <Col>
-          <FormGroup>
-            <Label for="id_title">คำนำหน้า</Label>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-            {student.name_title}
-          </FormGroup>
-        </Col>
-      <Col>
-          <FormGroup>
-            <Label for="fname_stu">ชื่อ</Label>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-            {student.fname_stu}
-          </FormGroup>
-        </Col>
-        <Col>
-          <FormGroup>
-          <Label for="lname_stu">นามสกุล</Label>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-          {student.lname_stu}
-          </FormGroup>
-        </Col>
+      
       </Row>
       <Row>
-        <Col>
-        <FormGroup>
-        <Label for="id_curriculum">สายการเรียน</Label>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-        {student.name_curriculum }
+      <Col>
+        <Label for="exampleEmail">ชื่อ</Label> : {student.name_title} {student.fname_stu} {student.lname_stu}
+        </Col>  
+        </Row>
+        <Row>
+      <Col>
+        <Label for="exampleEmail">สายการเรียน</Label> : {student.name_curriculum } 
+        </Col>  
+        </Row>
 
-        </FormGroup></Col>
-        <Col>
-        <FormGroup>
-        <Label for="GPA_stu">GPA รวม</Label>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-        {student.GPA_stu }
-
-        </FormGroup></Col>
-        <Col>
-        <FormGroup>
-        <Label for="year_class">ปีการศึกษา</Label>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-        {student.year_stu }
-
-        </FormGroup></Col>       
-      </Row>
-      <Row>
-        <Col>
-        <FormGroup>
-        <Label for="class">มัธยมปีที่</Label>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-        {student.year_class }
-
-        </FormGroup></Col>
-        <Col>
-        <FormGroup>
-        <Label for="year_stu">ห้อง</Label>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-        {student.class }
-
-        </FormGroup></Col>
-        <Col></Col>
-
-      </Row>
+        <Row>
+      <Col>
+        <Label for="exampleEmail">เกรดเฉลี่ยรวม</Label> : {student.GPA_stu} 
+        </Col>  
+        </Row>
+        <Row>
+      <Col>
+        <Label for="exampleEmail">มัธยมปีที่</Label> : {student.year_class}  <Label for="exampleEmail">ห้อง</Label> {student.class} 
+        </Col>  
+        </Row>
+        <Row>
+      <Col>
+        <Label for="exampleEmail">ปีการศึกษา</Label> : {student.year_stu} 
+        </Col>  
+        </Row>
+    </Form>
  
       <Row>
         <Col></Col>
@@ -92,7 +63,7 @@ const ViewProfile = ({id}) => {
 </Col>
 
       </Row>
-    </Form>
+ 
 </div>    
 
 

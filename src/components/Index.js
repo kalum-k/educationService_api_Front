@@ -51,16 +51,17 @@ function Index(props) {
                       <br />
                     จำนวนที่เปิดรับสมัคร : {edudetail.number_of_edu} คน</CardText>
                     <CardText> </CardText>
-                    <Button onClick={toggle}  color="info">รายละเอียด</Button>
+                    <Button onClick={toggle} onClick={edudetail.id_edudetail} color="info">รายละเอียด</Button>
+
                     <Modal isOpen={modal} toggle={toggle} className={className}>
                       <ModalHeader toggle={toggle}>Modal title</ModalHeader>
                       <ModalBody>
-                       <h2>{edudetail.name_course}</h2>
-                       <h4>{edudetail.name_faculty}</h4>
-                       <hr/>
-                       <p> จำนวนที่เปิดรับสมัคร : {edudetail.number_of_edu} คน</p>
+                        <h2>{edudetail.name_course}</h2>
+                        <h4>{edudetail.name_faculty}</h4>
+                        <hr />
+                        <p> จำนวนที่เปิดรับสมัคร : {edudetail.number_of_edu} คน</p>
 
-        </ModalBody>
+                      </ModalBody>
                       <ModalFooter>
                         <Button color="primary" onClick={toggle}>Do Something</Button>{' '}
                         <Button color="secondary" onClick={toggle}>Cancel</Button>

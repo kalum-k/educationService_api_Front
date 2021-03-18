@@ -35,7 +35,7 @@ const LoginForm = () => {
 
         };//เอาค่าที่รับจาก form มาใส่ใน json
 
-        axios.post("http://localhost:8080/Login", data)//ส่งค่าไปแอดใน DB
+        axios.post("http://localhost:8080/login", data)//ส่งค่าไปแอดใน DB
             .then((res) => {
                 console.log(res.data.message);
                 if (res.data.message == "Student") {
@@ -49,7 +49,7 @@ const LoginForm = () => {
                         'success',
                     )
                     window.location.assign("/")
-                    }
+                }
                 else {
 
                     Swal.fire(
@@ -70,26 +70,25 @@ const LoginForm = () => {
 
     return (
         <>
-           
+
             <Container className="container-fluid TZS-Container">
                 <div align="center" style={{ marginTop: '100px' }}>
                     <a href="/home">
-                        <h4>ระบบการให้บริการสารสนเทศทุนการศึกษา ฯ</h4>
+                        <h4>ระบบการให้บริการสารสนเทศการศึกษาต่อ</h4>
 
                     </a>
                 </div>
                 <div align="center" style={{ marginTop: '30px' }}>
                     <Card className="CardBackground-1" style={{ maxWidth: '500px' }} align="left">
-                        <CardBody className="">
-                            <h4>
-                                <img className="Button-icon" style={{ marginRight:'10px' }} src="https://tzs-global.com/website_factor-image/button_icon/person.png" />
+                        <CardBody >
+                            <h2 align="center">
                                 เข้าสู่ระบบ
-                            </h4>
+                            </h2>
                             <div className="borderline" />
                             <form>
                                 <FormGroup>
-                                    <Label for="exampleEmail">รหัสนักเรียน</Label>
-                                    <Input Type="id_stu" name="id_stu" placeholder="ใส่อีเมลที่นี่" onChange={inputdata} required />
+                                    <Label for="exampleEmail">User ID</Label>
+                                    <Input Type="id_stu" name="id_stu" placeholder="ใส่ User Id" onChange={inputdata} required />
                                 </FormGroup>
                                 <FormGroup>
                                     <Label for="exampleEmail">รหัสผ่าน</Label>
@@ -98,9 +97,6 @@ const LoginForm = () => {
                                 <div style={{ marginTop: '20px' }}>
                                     <Row>
                                         <Col md-6>
-                                            <Button color="link" size="md" className="Button-Style">ลืมรหัสผ่าน?</Button>
-                                        </Col>
-                                        <Col md-6>
                                             <Button color="success" size="lg" className="Button-Style" onClick={saveStudent} block>เข้าสู่ระบบ</Button>
                                         </Col>
                                     </Row>
@@ -108,16 +104,6 @@ const LoginForm = () => {
                             </form>
                             <div className="borderline" style={{ marginTop: '20px' }} />
                             <div style={{ marginTop: '20px' }}>
-                                <Row>
-                                    <Col md-6>
-                                        <div style={{ marginTop: '5px' }}>
-                                            ยังไม่มีบัญชีใช่หรือไม่?
-                                        </div>
-                                    </Col>
-                                    <Col md-6>
-                                        <Button href="/register" color="secondary" size="md" className="Button-Style" outline block>ลงทะเบียน</Button>
-                                    </Col>
-                                </Row>
                             </div>
                         </CardBody>
                     </Card>

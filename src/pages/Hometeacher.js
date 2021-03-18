@@ -1,11 +1,11 @@
 import React from "react"
-import Index from "../components/Index";
+import Hometeacher from "../components/Hometeacher";
 
 const Home = () => {
     return (
         <>
             <main>
-                <Index />
+                <Hometeacher />
             </main>
         </>
     );

@@ -150,11 +150,11 @@ const ViewInsertEducation = () => {
               <Col xs="6">
                 <FormGroup>
                   <Label for="tcas">Tcas</Label>
-                  <Input type="radio" name="tcas" id="tcas" onChange={handleInputChange} value={education.tcas || ""} >
+                  <Input type="select" name="tcas" id="tcas" onChange={handleInputChange} value={education.tcas || ""} >
+                    <option></option>
                     <option>เข้าร่วม</option>
                     <option>ไม่เข้าร่วม</option>
                   </Input>
-
                 </FormGroup></Col>
             </Row>
             <Row>

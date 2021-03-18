@@ -1,65 +1,94 @@
-import React, { useState } from 'react';
-import {
-  Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText, Card, CardText, CardBody, CardLink,
-  CardTitle, CardSubtitle, Badge
-} from 'reactstrap';
+import axios from "axios";
+import React, { useState, useEffect } from "react"
+import { Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText,  Card, CardText, CardBody, CardLink,
+    CardTitle, CardSubtitle,Badge  } from 'reactstrap';
 
-const ViewEducationStudentDetail = (props) => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const toggle = () => setDropdownOpen(prevState => !prevState);
-  return (
-    <div>
-      <div class="container">
-        <Row>
-          <Col><h3>สาขา</h3></Col>
-          <Col></Col>
-          <Col></Col>
-          <Col><h3>รอบที่</h3></Col>
+const ViewEducationStudentDetail = ({id}) => {
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const toggle = () => setDropdownOpen(prevState => !prevState);
+    const [educationdataia, setEducationdataia] = useState([]);
+ 
+  useEffect(() => {
+      axios.get("http://localhost:8080/Education/getAllEducationDatarhe5trj"+id)
+      .then((response)=>{
+        setEducationdataia(response.data);
+      });
+  }, [id]);//เมื่อidมีการเปลี่ยนเเปรง ก็จะรีหน้าทำการเปลี่ยนที่เราเปลี่ยน
+    return (
+        <div>
+     <div class="container">
+     <Row>
+      <Col>
+            <Label for="examplePassword">มหาวิทยาลัย</Label> : {educationdataia.name_uni}
+        </Col>
+      
+      </Row>
+      <Row>
+      <Col>
+        <Label for="exampleEmail">คณะ</Label> : {educationdataia.name_faculty}
+        </Col>  
         </Row>
-        <br />
         <Row>
-          <Col sm="12" md={{ size: 6, offset: 3 }}><Row><h3>มหาวิทยาลัย</h3><h3>&nbsp; : &nbsp; </h3><h3>ใส่มหาวิทยาลัย</h3></Row>  </Col>
+      <Col>
+        <Label for="exampleEmail">สาขา</Label> : {educationdataia.name_course}
+        </Col>  
+        </Row>
+
+        <Row>
+      <Col>
+        <Label for="exampleEmail">กลุ่มสาขา</Label> : {educationdataia.name_major}
+        </Col>  
         </Row>
         <Row>
-          <Col sm="12" md={{ size: 6, offset: 3 }}><Row><h3>คณะ</h3><h3>&nbsp; : &nbsp; </h3><h3>ใส่คณะ</h3></Row>  </Col>
+      <Col>
+        <Label for="exampleEmail">รอบ</Label> : {educationdataia.name_round}
+        </Col>  
         </Row>
-      </div>
-      <br />
-      <div class="container">
-        <Badge color="primary">Primary</Badge>
-        <Badge color="secondary">Secondary</Badge>
-        <Badge color="success">Success</Badge>
-        <Badge color="danger">Danger</Badge>
-        <Badge color="warning">Warning</Badge>
-        <Badge color="info">Info</Badge>
-        <Badge color="light">Light</Badge>
-        <Badge color="dark">Dark</Badge>
-        <p> </p>
-        <FormGroup>
-          <h4> <Label for="exampleText">เงื่อนไข</Label></h4>
-          <Input type="textarea" name="text" id="exampleText" />
-        </FormGroup>
-        <FormGroup>
-          <h4> <Label for="exampleText">เอกสาร</Label></h4>
-          <Input type="textarea" name="text" id="exampleText" />
-        </FormGroup>
-      </div>
-      <br />
-      <div class="container">
-        <p> </p>
-        <h4><b>โหลดเอกสารเพิ่มเติม</b></h4>
-        <h4><b>โหลดเอกสารเพิ่มเติม</b></h4>
-        <h4><b>โหลดเอกสารเพิ่มเติม</b></h4>
-        <h4><b>โหลดเอกสารเพิ่มเติม</b></h4>
-        <h4><b>โหลดเอกสารเพิ่มเติม</b></h4>
+        <Row>
+      <Col>
+        <Label for="exampleEmail">จำนวนรับสมัคร</Label> : {educationdataia.number_of_edu}
+        </Col>  
+        </Row>
+        <Row>
+      <Col>
+        <Label for="exampleEmail">เปิดรับสมัคร</Label> : {educationdataia.open_date}
+        </Col>  
+        </Row>
+        <Row>
+      <Col>
+        <Label for="exampleEmail">ปิดรับสมัคร</Label> : {educationdataia.close_date}
+        </Col>  
+        </Row>
+        <Row>
+      <Col>
+        <Label for="exampleEmail">วันรายงานตัว</Label> : {educationdataia.list_day}
+        </Col>  
+        </Row>
+</div>    
+<br />
+<div class="container">
+<p> </p>
+<FormGroup>
+<h4> <Label for="exampleText">เงื่อนไข</Label></h4>
+        <Input type="textarea" name="text" id="exampleText" value={educationdataia.general}/> 
+      </FormGroup>
+      <FormGroup>
+<h4> <Label for="exampleText">เอกสาร</Label></h4>
+        <Input type="textarea" name="text" id="exampleText"  value={educationdataia.doculment_edu} />
+      </FormGroup>
+</div>    
+<br />
+<div class="container">
+<p> </p>
+<h4><b>โหลดเอกสารเพิ่มเติม</b></h4><br />
+<a href={educationdataia.url_doculment}>{educationdataia.url_doculment}</a>
+</div>    
 
-      </div>
+<br />
 
 
-
-
-    </div>
-  );
-}
-
-export default ViewEducationStudentDetail;
+</div>
+);
+  }
+  
+  export default ViewEducationStudentDetail;
