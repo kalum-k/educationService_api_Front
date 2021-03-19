@@ -85,14 +85,14 @@ const LoginForm = () => {
                                 เข้าสู่ระบบ
                             </h2>
                             <div className="borderline" />
-                            <form>
+                            <Form>
                                 <FormGroup>
                                     <Label for="exampleEmail">User ID</Label>
                                     <Input Type="id_stu" name="id_stu" placeholder="ใส่ User Id" onChange={inputdata} required />
                                 </FormGroup>
                                 <FormGroup>
                                     <Label for="exampleEmail">รหัสผ่าน</Label>
-                                    <Input type="password_stu" name="password_stu" placeholder="ใส่รหัสผ่านที่นี่" onChange={inputdata} required />
+                                    <Input type="password" name="password_stu" placeholder="ใส่รหัสผ่านที่นี่" onChange={inputdata} required />
                                 </FormGroup>
                                 <div style={{ marginTop: '20px' }}>
                                     <Row>
@@ -101,7 +101,7 @@ const LoginForm = () => {
                                         </Col>
                                     </Row>
                                 </div>
-                            </form>
+                            </Form>
                             <div className="borderline" style={{ marginTop: '20px' }} />
                             <div style={{ marginTop: '20px' }}>
                             </div>

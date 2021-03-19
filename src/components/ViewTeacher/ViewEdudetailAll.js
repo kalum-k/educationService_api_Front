@@ -64,7 +64,7 @@ const ViewEducationAll = ({ id }) => {
               <th>คณะ</th>
               <th>สาขา</th>
               <th>จำนวน</th>
-              <th>สายการเรียน</th>
+              <th>แผนการเรียน</th>
               <th>เกรดที่กำหนด</th>
               <th>เเก้ไข</th>
 

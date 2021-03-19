@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' //fornt
 import { faEdit, faPen, faSearch, faTrash } from "@fortawesome/free-solid-svg-icons";
 import {
   Row, Col, Button, FormGroup, Label, Input,
-  NavLink, Table
+  NavLink, Table, CardGroup, Card, CardBody, CardText, CardTitle
 } from 'reactstrap';
 
 
@@ -21,19 +21,20 @@ const ViewEducationAll = () => {
 
   return (
     <div>
-      <div class="container">
+      <div className="container">
         <br />
         <Row>
           <Col xs="6">
             <FormGroup>
               <Label for="year_edu">ค้นหา</Label>
-              <Input type="text" name="year_edu" id="year_edu"  >
-                <FontAwesomeIcon icon={faSearch} /></Input>
+              <Input type="text" value="" >
+
+              </Input>
             </FormGroup></Col>
         </Row>
       </div>
       <br />
-      <div class="container">
+      <div className="container">
         <Row>
           <Col></Col>
           <Col></Col>
@@ -73,10 +74,6 @@ const ViewEducationAll = () => {
           </tbody>
         </Table>
       </div>
-
-
-
-
     </div>
   );
 }

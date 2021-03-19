@@ -22,7 +22,6 @@ const ViewInsertEduDetail = () => {
     const [submited, setSumited] = useState(false)
     const [course, setCourse] = useState([])
     const [faculty, setFaculty] = useState([])
-    const [university, setUniversity] = useState([])
     const [education, setEducation] = useState([])
 
     
@@ -38,7 +37,7 @@ const ViewInsertEduDetail = () => {
     }, []);
 
     const updateFaculty = () => {
-        axios.get("http://localhost:8080/faculty").then((response) => {
+        axios.get("http://localhost:8080/fac").then((response) => {
             console.log(response);
             setFaculty(response.data.faculty);
             console.log("Updating .....");
@@ -50,7 +49,7 @@ const ViewInsertEduDetail = () => {
 
 
     const updateCourse = () => {
-        axios.get("http://localhost:8080/course").then((response) => {
+        axios.get("http://localhost:8080/cou").then((response) => {
             console.log(response);
             setCourse(response.data.course);
             console.log("Updating .....");
@@ -69,16 +68,7 @@ const ViewInsertEduDetail = () => {
         setEdudetail({ ...edudetail, [name]: value });
     };
 
-    const updateUniversity = () => {
-        axios.get("http://localhost:8080/University").then((response) => {
-            console.log(response);
-            setUniversity(response.data.university);
-            console.log("Updating .....");
-        });
-    };
-    useEffect(() => {
-        updateUniversity();
-    }, []);
+
 
     const saveEdudetail = (fileURL) => {
         var data = {
@@ -124,6 +114,7 @@ const ViewInsertEduDetail = () => {
                                     <Label for="id_faculty">คณะที่เปิดรับ</Label>
                                     <Input type="select" name="id_faculty" id="id_faculty"
                                         onChange={handleInputChange} value={edudetail.id_faculty || ""} >
+                                            <option></option>
                                         {faculty.map((faculty) => {
                                             return (
                                                 <option key={faculty.id_faculty} value={faculty.id_faculty}>
@@ -138,6 +129,7 @@ const ViewInsertEduDetail = () => {
                                     <Input type="select" name="id_course" id="id_course"
                                         value={edudetail.id_course || ""}
                                         onChange={handleInputChange}>
+                                            <option></option>
                                         {course.map((course) => {
                                             return (
                                                 <option key={course.id_course} value={course.id_course}>
@@ -177,7 +169,7 @@ const ViewInsertEduDetail = () => {
                             <Col xs="6">
                                 <FormGroup>
                                     <Label for="id_education">Education</Label>
-                                    <Input type="select" name="id_education" id="id_education"
+                                    <Input type="text" name="id_education" id="id_education"
                                         onChange={handleInputChange} value={edudetail.id_education || ""}>
                                      
                                     </Input>
